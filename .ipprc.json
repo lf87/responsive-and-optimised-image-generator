@@ -1,0 +1,71 @@
+{
+  "input": "images",
+  "output": "build",
+  "pipeline": [
+    {
+      "pipe": "resize",
+      "options": {
+        "breakpoints": [
+          {
+            "name": "2560",
+            "resizeOptions": {
+              "width": 2560,
+              "height": 1440,
+              "fit": "inside"
+            }
+          },
+          {
+            "name": "1920",
+            "resizeOptions": {
+              "width": 1920,
+              "height": 1440,
+              "fit": "inside"
+            }
+          },
+          {
+            "name": "1440",
+            "resizeOptions": {
+              "width": 1440,
+              "height": 1440,
+              "fit": "inside"
+            }
+          },
+          {
+            "name": "1080",
+            "resizeOptions": {
+              "width": 1080,
+              "height": 1440,
+              "fit": "inside"
+            }
+          },
+          {
+            "name": "768",
+            "resizeOptions": {
+              "width": 768,
+              "height": 1440,
+              "fit": "inside"
+            }
+          },
+          {
+            "name": "480",
+            "resizeOptions": {
+              "width": 480,
+              "height": 1440,
+              "fit": "inside"
+            }
+          }
+        ]
+      },
+      "save": "{{originalName}}-{{breakpoint}}{{ext}}",
+      "then": [
+        {
+          "pipe": "convert",
+          "options": {
+            "format": "webp"
+          },
+          "save": "{{originalName}}-{{breakpoint}}{{ext}}"
+        }
+      ]
+    }
+  ]
+}
